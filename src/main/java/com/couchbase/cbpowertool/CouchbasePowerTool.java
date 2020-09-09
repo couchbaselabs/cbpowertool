@@ -1,4 +1,4 @@
-package com.couchbase.cbtest;
+package com.couchbase.cbpowertool;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -76,10 +76,10 @@ import static com.couchbase.client.java.kv.UpsertOptions.upsertOptions;
  *  @author jagadeshmunta
  *
  */
-public class CouchbaseTester 
+public class CouchbasePowerTool 
 {
 	
-	static Logger logger = Logger.getLogger("cbtest");
+	static Logger logger = Logger.getLogger("cbpowertool");
 	static Properties settings = null;
 	static Cluster cluster = null;
 	static Bucket bucket = null;
@@ -87,7 +87,7 @@ public class CouchbaseTester
     public static void main( String[] args )
     {
         print("*** Couchbase Tester ***");
-        CouchbaseTester cbtest = new CouchbaseTester(System.getProperties());
+        CouchbasePowerTool cbpowertool = new CouchbasePowerTool(System.getProperties());
         String actions = settings.getProperty("run", "connectCluster");
         
     	StringTokenizer st = new StringTokenizer(actions, ",");
@@ -99,7 +99,7 @@ public class CouchbaseTester
     				String clsName = action.substring(0,action.lastIndexOf("."));
     				String methodName = action.substring(action.lastIndexOf(".")+1);
     				print("-->Running "+clsName+" invoking "+methodName);
-    				ClassLoader classLoader = cbtest.getClass().getClassLoader();
+    				ClassLoader classLoader = cbpowertool.getClass().getClassLoader();
     				Object newObject = classLoader.loadClass(clsName).getDeclaredConstructor()
                             .newInstance();
     				if ("help".equalsIgnoreCase(methodName)) {
@@ -110,12 +110,12 @@ public class CouchbaseTester
 	    		        method.invoke(newObject,settings);
     				}
     			} else if ("help".equalsIgnoreCase(action)) {
-    				printServiceHelp(cbtest);
+    				printServiceHelp(cbpowertool);
 					
 				} else {
-	    			Method method = cbtest.getClass().getMethod(action, Properties.class);
+	    			Method method = cbpowertool.getClass().getMethod(action, Properties.class);
 			        method.setAccessible(true);
-			        method.invoke(cbtest,settings);
+			        method.invoke(cbpowertool,settings);
     			}
 	        } catch (Exception e) {
 	        	e.printStackTrace();
@@ -164,11 +164,11 @@ public class CouchbaseTester
 		}
     }
     
-    public CouchbaseTester() {
+    public CouchbasePowerTool() {
     	this.settings = System.getProperties();
     }
     
-    public CouchbaseTester(Properties props) {
+    public CouchbasePowerTool(Properties props) {
     	this.settings = props;
     }
     

@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.couchbase</groupId>
-	<artifactId>cbtest</artifactId>
+	<artifactId>cbpowertool</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>cbtest</name>
+	<name>cbpowertool</name>
 	<url>http://www.couchbase.com</url>
 
 	<properties>
@@ -82,7 +82,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.couchbase.cbtest.CouchbaseTester</mainClass>
+							<mainClass>com.couchbase.cbpowertool.CouchbasePowerTool</mainClass>
 						</manifest>
 					</archive>
 					
@@ -101,7 +101,7 @@
                 <archive>
                 <manifest>
                     <mainClass>
-                        com.couchbase.cbtest.CouchbaseTester
+                        com.couchbase.cbpowertool.CouchbasePowerTool
                     </mainClass>
                 </manifest>
                 </archive>
